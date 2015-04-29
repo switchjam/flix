@@ -1,0 +1,18 @@
+<li>
+  <span class="review"><%= pluralize(@review.stars, 'star') %></span>
+  <span class="user">by <%= @review.name %></span>
+  <span class="date"><%= time_ago_in_words(@review.created_at) %> ago</span>
+  <p>
+    &quot;<%= @review.comment %>&quot;
+  </p>
+</li>
+
+<footer>
+  <nav>
+		<%= link_to pluralize(@movie.reviews.size, 'review'), movie_reviews_path(@movie), class: 'button' %>
+    <%= link_to 'Edit', edit_movie_review_path(@movie, @review), class: 'button' %>
+    <%= link_to 'Delete', movie_review_path(@movie, @review), 
+                class: 'button',
+                method: :delete, data: { confirm: 'Are you sure?' } %>
+  </nav>	
+</footer>
